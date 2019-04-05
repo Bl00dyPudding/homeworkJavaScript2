@@ -1,6 +1,6 @@
 "use strict";
 
-let name = 'Vlad'; //name
+let name = 'Mr. Robot'; //name
 
 console.log(`Hello, ${name}`);
 
