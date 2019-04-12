@@ -5,7 +5,7 @@
 /*
 var GOODS = [
     { title: 'Shirt' , price: 150 },
-    { title: 'Socks' , price: 50 },
+    { title: 'Socks' , price: 50  },
     { title: 'Jacket', price: 350 },
     { title: 'Shoes' , price: 250 }
 ];
@@ -23,6 +23,8 @@ function renderGoodsList(list) {
     }
     document.querySelector('.goods-list').innerHTML = goodsList;
 };
+
+renderGoodsList();
 */
 
 ///ES6///
@@ -30,7 +32,7 @@ function renderGoodsList(list) {
 /*
 const GOODS = [
     { title: 'Shirt' , price: 150 },
-    { title: 'Socks' , price: 50 },
+    { title: 'Socks' , price: 50  },
     { title: 'Jacket', price: 350 },
     { title: 'Shoes' , price: 250 }
 ];
@@ -42,6 +44,8 @@ const renderGoodsList = (list = GOODS) => {
     let goodsList = list.map(item => renderGoodsItem(item.title, item.price));
     document.querySelector('.goods-list').innerHTML = goodsList.join(""); //таким образом можно избавиться от запятых
 };
+
+renderGoodsList();
 */
 
 class GoodsItem {
@@ -71,4 +75,3 @@ class GoodsList {
 
 
 
-renderGoodsList();

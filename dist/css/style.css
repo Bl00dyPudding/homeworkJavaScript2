@@ -189,6 +189,7 @@ body {
   border: 1px solid black;
   padding: 20px;
 }
+
 .header .cart-button {
   width: 100px;
   height: 30px;
@@ -196,6 +197,7 @@ body {
   background-color: #ccc;
   transition: .5s;
 }
+
 .header .cart-button:hover {
   background-color: #666;
   color: #fff;
@@ -206,6 +208,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 .goods-list .goods-list__item {
   width: 150px;
   height: 200px;
@@ -215,18 +218,20 @@ body {
   box-sizing: border-box;
   position: relative;
 }
+
 .goods-list .goods-list__item h3 {
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;
   margin-top: 85%;
 }
+
 .goods-list .goods-list__item:before {
   display: block;
   content: "";
   width: 100%;
   height: 100px;
-  background-color: #000;
+  background-color: #333;
   position: absolute;
   left: 0;
 }
