@@ -78,12 +78,116 @@ class GoodsList {
         });
         document.querySelector('.goods-list').innerHTML = listHtml;
     }
+    totalPrice () {
+        let price = 0;
+        this.goods.forEach(good => {
+            price += good.price;
+        });
+        return console.log(`Суммарная стоимость товаров: ${price}.`);
+    }
+}
+
+class Cart {
+    constructor () {
+
+    }
+    showAll () {
+
+    }
+}
+
+class CartElement {
+    constructor () {
+
+    }
+    addElement () {
+
+    }
+    removeElement () {
+
+    }
 }
 
 const list = new GoodsList;
 list.fetchGoods();
 list.render();
+list.totalPrice();
 
 
+/// Hamburger ///
+/// который я не доделал, потому что тупой :( ///
 
+const SIZE = [
+    {
+        name: 'Маленький',
+        price: 50,
+        calories: 20
+    },
+    {
+        name: 'Большой',
+        price: 100,
+        calories: 40
+    }
+];
+const STUFFING = [
+    {
+        name: 'Сыр',
+        price: 10,
+        calories: 20
+    },
+    {
+        name: 'Салат',
+        price: 20,
+        calories: 5
+    },
+    {
+        name: 'Картофель',
+        price: 15,
+        calories: 10
+    }
+];
+const TOPPING = [
+    {
+        name: 'Специи',
+        price: 15,
+        calories: 0
+    },
+    {
+        name: 'Майонез',
+        price: 20,
+        calories: 5
+    }
+];
+
+class Hamburger {
+    constructor (size) {
+        this.size = size.name;
+        this.calories = [];
+        this.calories.push(size.calories);
+        this.price = [];
+        this.price.push(size.price);
+    };
+    addStuffing (stuffing) {
+
+    };
+    removeStuffing (stuffing) {
+
+    };
+    addTopping (topping) {
+
+    };
+    removeTopping (topping) {
+
+    };
+    calculatePrice () {
+
+    };
+    calculateCalories () {
+
+    };
+}
+
+let hamburger = new Hamburger(SIZE[1]);
+
+console.log(hamburger);
 
