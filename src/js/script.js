@@ -70,7 +70,19 @@ class GoodsList {
             { title: 'Shoes' , price: 250 }
         ];
     }
+    render () {
+        let listHtml = '';
+        this.goods.forEach(good => {
+            const goodItem = new GoodsItem(good.title, good.price);
+            listHtml += goodItem.render();
+        });
+        document.querySelector('.goods-list').innerHTML = listHtml;
+    }
 }
+
+const list = new GoodsList;
+list.fetchGoods();
+list.render();
 
 
 
