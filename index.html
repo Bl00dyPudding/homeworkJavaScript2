@@ -13,6 +13,17 @@
         <p id="text">let someText = 'This is a string with quotes, in which there is a text with an apostrophe that doesn't need to be changed.'</p>
         <button id="magic">Replace</button>
     </div>
+
+    <form action="javascript:">
+        2
+        <input placeholder="Имя" type="text" pattern="[а-яА-ЯёЁ]{2,64}" required title="Разрешены только буквы кириллицы" />
+        3
+        <input placeholder="Телефон" type="tel" pattern="[0-9]{5,12}" required title="Разрешены только цифры" />
+        4
+        <button type="submit">Отправить</button>
+        5
+    </form>
+
 </body>
 <script src="dist/js/script.min.js"></script>
 </html>
