@@ -1,26 +1,68 @@
-const goods = [
-    { title: 'Shirt',  price: 150 },
-    { title: 'Socks',  price: 50 },
-    { title: 'Jacket', price: 350 },
-    { title: 'Shoes',  price: 250 },
-];
+class Item {
+    constructor(title, price) {
+        this.title = title;
+        this.price = price;
+    }
 
-const renderItem = (title, price) => {
-    let div = document.createElement('div');
-    let h3  = document.createElement('h3');
-    let p   = document.createElement('p');
+    render () {
+        let div = document.createElement('div');
+        let h3  = document.createElement('h3');
+        let p   = document.createElement('p');
+        let button   = document.createElement('button');
 
-    h3.innerText = title;
-    p.innerText  = price;
+        h3.innerText = this.title;
+        p.innerText  = this.price;
+        button.innerText = 'В корзину';
 
-    div.append(h3);
-    div.append(p);
+        button.onclick = this.addToBasket;
 
-    return div;
-};
+        div.append(h3);
+        div.append(p);
+        div.append(button);
 
-const renderGoods = list => {
-    document.querySelector('.goods').append(...list.map(item => renderItem(item.title, item.price)));
-};
+        return div;
+    }
 
-renderGoods(goods);
+    addToBasket() {
+        fetch('https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/addToBasket.json')
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(err => new Error(err));
+    }
+}
+
+class Goods {
+    constructor() {
+        this.total = 0;
+    }
+
+    async fetchGoods() {
+        await fetch('https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json')
+            .then(response => response.json())
+            .then(result => this.goods = result)
+            .catch(err => new Error(err));
+    }
+
+    render() {
+        const list = [];
+        this.goods.forEach(good => {
+            let goodsItem = new Item(good['product_name'], good['price']);
+            list.push(goodsItem.render());
+        });
+        document.querySelector('.goods').append(...list);
+
+        let p = document.createElement('p');
+        p.innerText  = `Общая сумма: ${this.total}`;
+        document.querySelector('.goods').append(p);
+    }
+
+    totalSum() {
+        let initialValue = 0;
+        this.total = this.goods.reduce((a, c) => a + c['price'], initialValue);
+    }
+}
+
+const goodsList = new Goods();
+goodsList.fetchGoods()
+    .then(() => goodsList.totalSum())
+    .then(() => goodsList.render());
